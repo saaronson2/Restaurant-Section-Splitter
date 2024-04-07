@@ -14,20 +14,22 @@ function initMap() {
 }
 
 function createGrid(cityCoords, numSections) {
-    const latRange = 0.5; // Adjust this to control the size of the grid
-    const lngRange = 0.5; // Adjust this to control the size of the grid
+    const gridSize = 1.0; // Total size of the grid in degrees (adjust as needed)
 
-    const latInterval = latRange / numSections;
-    const lngInterval = lngRange / numSections;
+    const latInterval = gridSize / numSections;
+    const lngInterval = gridSize / numSections;
 
     const grid = [];
+    const latStart = cityCoords.lat - (gridSize / 2);
+    const lngStart = cityCoords.lng - (gridSize / 2);
+
     for (let i = 0; i < numSections; i++) {
         for (let j = 0; j < numSections; j++) {
             const box = {
-                latMin: cityCoords.lat + i * latInterval,
-                latMax: cityCoords.lat + (i + 1) * latInterval,
-                lngMin: cityCoords.lng + j * lngInterval,
-                lngMax: cityCoords.lng + (j + 1) * lngInterval,
+                latMin: latStart + i * latInterval,
+                latMax: latStart + (i + 1) * latInterval,
+                lngMin: lngStart + j * lngInterval,
+                lngMax: lngStart + (j + 1) * lngInterval,
             };
             grid.push(box);
         }
