@@ -2,7 +2,7 @@ import requests
 import random
 
 def get_city_coordinates(city_name):
-    api_key = 'AIzaSyC6a7CH7cy_xP26mz2WCuEOc-EB2ndcJrE'
+    api_key = 'API_KEY'
     url = f'https://maps.googleapis.com/maps/api/geocode/json?address={city_name}&key={api_key}'
     response = requests.get(url)
     data = response.json()
