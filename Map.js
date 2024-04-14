@@ -86,7 +86,7 @@ function performNearbySearch(box) {
     };
 
     // Construct Nearby Search API request URL
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${request.location.lat},${request.location.lng}&radius=${request.radius}&type=${request.type}&key=AIzaSyD5o7hE9sPaiAauEtmwVpuwh0It2nfLy0E`;
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${request.location.lat},${request.location.lng}&radius=${request.radius}&type=${request.type}&key=API_KEY_HERE`;
 
     // Send AJAX request or fetch API to perform the Nearby Search
     fetch(url)
