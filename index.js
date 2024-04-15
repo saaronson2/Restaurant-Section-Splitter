@@ -1,8 +1,9 @@
 let map;
 
-function initMap() {
+async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
     const cityCoords = { lat: 43.15657789999999, lng: -77.6088465 }; // Default coordinates for Rochester, change this to your city
-    map = new google.maps.Map(document.getElementById("map"), {
+    map = new Map(document.getElementById("map"), {
         center: cityCoords,
         zoom: 20,
     });
@@ -38,6 +39,8 @@ function createGrid(cityCoords, numSections) {
 }
 
 function drawGrid(grid) {
+    console.log("Test");
+
     const bounds = new google.maps.LatLngBounds();
     const rectangles = [];
 
@@ -71,6 +74,7 @@ function drawGrid(grid) {
 }
 
 function performNearbySearch(box) {
+    console.log("Entered");
     const centerLat = (box.latMax + box.latMin) / 2;
     const centerLng = (box.lngMax + box.lngMin) / 2;
     const diagonalDistance = google.maps.geometry.spherical.computeDistanceBetween(
@@ -86,7 +90,7 @@ function performNearbySearch(box) {
     };
 
     // Construct Nearby Search API request URL
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${request.location.lat},${request.location.lng}&radius=${request.radius}&type=${request.type}&key=API_KEY_HERE`;
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${request.location.lat},${request.location.lng}&radius=${request.radius}&type=${request.type}&key=AIzaSyCPw1o6NhXMrL3ZVq4EUlFFB9ci_qSfwH8`;
 
     // Send AJAX request or fetch API to perform the Nearby Search
     fetch(url)
